@@ -1,0 +1,16 @@
+run-name: Fetch Read Books Data
+
+on:
+  # Manual dispatch available
+  workflow_dispatch:
+  # Run on every Sunday at 1200
+  schedule:
+    - cron: '0 12 * * 0'
+
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: ./fetch.sh ${{ secrets.USER_ID }}
